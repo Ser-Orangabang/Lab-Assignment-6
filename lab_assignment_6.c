@@ -2,7 +2,24 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
-	return -1;
+  if (low > high) {
+       return -1;
+   }
+   int split = ((low + high) / 2);
+   if (numbers[split] == value) {
+     //returns the index of the value if it's found in the function
+     return split;
+   }
+   else if (numbers[split] > value) {
+     //Recursivly searches the half of the array the number is in  
+     return search(numbers, low, split - 1, value);
+   }
+   else {
+      //Recursivly searches the half of the array the number is in
+     return search(numbers, split + 1, high, value);
+   }
+  
+  return -1;
 }
 
 void printArray(int numbers[], int sz)
